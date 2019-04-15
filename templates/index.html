@@ -1,0 +1,43 @@
+{% extends "boilerplate_index/index.html" %}
+{% block title %}Mytaxi Conversion{% endblock %}
+{% block content %}
+    <h1>MyTaxi 2 Excel converter</h1>
+
+    <h2>Problem</h2>
+    <p>If you use taxis a lot in germany, and use mytaxi for this purpose, these receipts will appear familiar to
+        you</p>
+    <img class="img-thumbnail small-image" src={{ url_for('static', filename='img/demo.png') }}>
+
+    <p>
+        This tool extracts meta information from these PDF receipts for further analysis
+    </p>
+    <h2>How to use</h2>
+    <ul>
+
+        <li>Click "Choose files" below</li>
+        <li>Select multiple PDFs receipts that you've got from MyTaxi</li>
+        <li>Click "Upload"</li>
+        <li>An excel will be downloaded with information about the trips, this can be used to i.e. file expenses</li>
+    </ul>
+
+    <h2>Upload files</h2>
+    <form action="/upload"
+          method=post
+          enctype=multipart/form-data>
+
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Select your MyTaxi reciepts</label>
+            <input class="form-control-file"
+                   multiple
+                   type="file"
+                   accept=".pdf"
+                   name="files">
+
+
+        </div>
+      <button type="submit" class="btn btn-primary">Upload</button>
+
+
+    </form>
+
+{% endblock %}
